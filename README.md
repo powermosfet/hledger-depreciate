@@ -1,0 +1,1 @@
+# Hledger-depreciate
