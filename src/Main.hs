@@ -12,8 +12,7 @@ import qualified Data.Text as T
 
 main :: IO ()
 main = do
-    -- configFile <- head <$> getArgs
-    let configFile = "test.dhall"
+    configFile <- head <$> getArgs
 
     config <- inputFile auto configFile
 
