@@ -1,15 +1,13 @@
-let
-  bootstrap = import <nixpkgs> { };
-
-  nixpkgs = builtins.fromJSON (builtins.readFile ./nixpkgs.json);
-
-  src = bootstrap.fetchFromGitHub {
-    owner = "NixOS";
-    repo  = "nixpkgs";
-    inherit (nixpkgs) rev sha256;
-  };
-
-  pkgs = import src { };
-
-in
-  pkgs.haskellPackages.callPackage ./hledger-depreciate.nix { }
+{ mkDerivation, base, dhall, errors, hledger-lib, lib, text, time
+}:
+mkDerivation {
+  pname = "hledger-depreciate";
+  version = "1.0.0";
+  src = ./.;
+  isLibrary = false;
+  isExecutable = true;
+  executableHaskellDepends = [
+    base dhall errors hledger-lib text time
+  ];
+  license = lib.licenses.bsd3;
+}
