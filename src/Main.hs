@@ -9,6 +9,7 @@ import Config
 import Depreciation
 import Control.Monad
 import qualified Data.Text as T
+import qualified Data.Text.IO as T
 
 main :: IO ()
 main = do
@@ -19,6 +20,6 @@ main = do
     errLn ("Generating depreciations for '" <> Config.description config <> "'...")
 
     let transactions = Depreciation.createTransactions config
-    mapM (putStrLn . showTransaction) transactions
+    mapM (T.putStrLn . showTransaction) transactions
 
     errLn "Done!"
