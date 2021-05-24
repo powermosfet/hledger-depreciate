@@ -17,7 +17,7 @@ main = do
 
     config <- inputFile auto configFile
 
-    err ("Generating depreciations for '" <> Config.date config <> " " <> Config.description config <> "'...")
+    err ("Generating depreciations for '" <> T.pack (Config.date config) <> " " <> Config.description config <> "' ... ")
 
     let transactions = Depreciation.createTransactions config
     mapM (T.putStrLn . showTransaction) transactions
