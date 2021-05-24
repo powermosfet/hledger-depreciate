@@ -25,6 +25,6 @@ createTransactions config =
         indexToDepreciationTransaction i =
             makeDepreciationTransaction (addGregorianMonthsClip i purchaseDate) (if i == 0 then restAmount else periodAmount)
         depreciations =
-            indexToDepreciationTransaction <$> [ 0..(toEnum periodCount) ]
+            indexToDepreciationTransaction <$> [ 0..(toEnum periodCount - 1) ]
     in
     purchaseTransaction : depreciations
